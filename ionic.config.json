@@ -1,0 +1,7 @@
+{
+  "name": "kansaAdministrador",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

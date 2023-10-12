@@ -1,0 +1,67 @@
+form {
+    margin: 5%;
+    .logo {
+        margin-right: 10%;
+        margin-left: 10%;
+        img{
+            height: 140px;
+            width: 100%;
+            object-fit: contain;
+            object-position: center center;
+        }
+    }
+
+    ion-item{
+        margin-top: 5%;
+        // margin-bottom: 5%;
+        border-radius: 10px;
+    }
+}
+
+.content {
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, #207cfc 0%, #20c5fc 100%);
+    // margin-top: -70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    .iniciar {
+        font-size: 20PX;
+        text-align: center;
+    }
+
+    .olvido {
+        font-size: 14px;
+        margin: 15px;
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    .registro {
+        margin: 15px;
+        text-align: center;
+        font-size: 14px;
+        span {
+            color: #2dd36f;
+        }
+    }
+}
+
+.alertDanger {
+    color: #201E1E;
+    // background-color: rgb(248, 172, 172);
+    border-radius: 3px;
+    width: 100%;
+}
+.mensajeError {
+    margin-left: 10px;
+    font-size: 14px;
+    padding: 5px;
+    text-align: left;
+}
+
+ion-button {
+    margin-top: 5%;
+}

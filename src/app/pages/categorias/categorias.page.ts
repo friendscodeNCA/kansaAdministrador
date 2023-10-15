@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,7 +31,8 @@ export class CategoriasPage implements OnInit {
     private servGlobal: GlobalService,
     private dataApi: DbDataService,
     private pasarDato: PasarDatosService,
-    private buscador: BuscadorService
+    private buscador: BuscadorService,
+    private location: Location
   ) {
     this.categoriaForm = this.createFormUsuario();
   }
@@ -132,10 +134,6 @@ export class CategoriasPage implements OnInit {
     this.router.navigate(['/subcategorias', categoria.id]);
   }
 
-  registro() {
-    this.router.navigate(['/registro-datos']);
-  }
-
   textoBuscar(data) {
     this.textoBuscador = data.target.value;
     console.log(data);
@@ -147,6 +145,14 @@ export class CategoriasPage implements OnInit {
     } else {
       this.router.navigate(['/resultados-busqueda', this.textoBuscador]);
     }
+  }
+
+  irHome() {
+    this.router.navigate(['/home']);
+  }
+
+  volver() {
+    this.location.back();
   }
 
 }

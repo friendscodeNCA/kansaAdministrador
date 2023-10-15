@@ -15,6 +15,7 @@ export class HomePage {
     ) {
     this.menuCtrl.enable(true);
   }
+  
   irCategoria(){
     console.log('ir a categorias');
      this.router.navigate(['/categorias'])

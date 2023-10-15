@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +33,8 @@ export class SubcategoriasPage implements OnInit {
     private servGlobal: GlobalService,
     private dataApi: DbDataService,
     private buscador: BuscadorService,
-    private globalService: GlobalService
+    private globalService: GlobalService,
+    private location: Location
   ) {
     this.idCategoria = this.route.snapshot.params['id'];
     this.categoriaForm = this.createFormUsuario();
@@ -44,6 +46,14 @@ export class SubcategoriasPage implements OnInit {
     if (!this.dataCategoria) {
       this.router.navigate(['/tabs/tab1']);
     }
+  }
+
+  irHome() {
+    this.router.navigate(['/home']);
+  }
+
+  volver() {
+    this.location.back();
   }
 
   obtenerSubCategorias() {

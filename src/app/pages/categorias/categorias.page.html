@@ -1,54 +1,87 @@
-
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-row class="ion-justify-content-start ion-align-items-center">
+      <ion-col size="2">
+        <img src="../../assets/img/logo.png" alt="" (click)="irHome()">
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>| Nerio C. H.</ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button size="small" shape="round" fill="outline" color="light">
+          <ion-icon color="light" name="power-outline"></ion-icon> &nbsp;
+          <ion-label>Cerrar Sesion</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-buttons>
+      <ion-buttons slot="start">
+        <ion-menu-button color="danger" menu="primerMenu">
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true" color="light">
- 
-
-
-
-  <div class="categorias">
-    <ion-item-divider>
-      <ion-label>Categorias</ion-label>
-      <ion-button mode="ios" size="small" slot="end" id="modalCategoria" shape="clear">
-        <ion-icon name="add"></ion-icon>Agregar categoria
-      </ion-button>
-      <ion-button mode="ios" size="small" slot="end" (click)="registro()" shape="clear">
-        <ion-icon name="person-outline"></ion-icon>Registrar Usuario
-      </ion-button>
-    </ion-item-divider>
-    <div class="tituloGeneral">
-      <ion-label>CATEGORÍAS GENERALES</ion-label>
-      <p>Realiza una busqueda personalizada</p>
-    </div>
-    <ion-grid fixed>
-      <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-col size="4" *ngFor="let categoria of listaCategorias">
-          <ion-card color="light" mode="ios" (click)="irSubcategoria(categoria)">
-            <ion-card-header>
-              <img [src]="categoria.img" alt="">
-            </ion-card-header>
-            <ion-card-content>
-              <ion-label>{{categoria.nombre | titlecase }}</ion-label>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <div class="skeleton" *ngIf="!listaCategorias.length">
-        <ion-row class="ion-justify-content-center ion-align-items-center">
-          <ion-col size="4" *ngFor="let categoria of [1,1,1,1,1]">
-            <ion-card color="light" mode="ios">
-              <ion-card-header>
-                <ion-skeleton-text animated style="width: 50%; height: 70%; margin: 0 auto;"></ion-skeleton-text>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-skeleton-text animated style="width: 100%; height: 30%; margin: 0 auto;"></ion-skeleton-text>
-                <ion-skeleton-text animated style="width: 50%; height: 30%; margin: 0 auto; margin-top: 5px;"></ion-skeleton-text>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </div>
-    </ion-grid>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xl="2" size-xs="1"></ion-col>
+      <ion-col size-xl="8" size-xs="10">
+        <ion-item class="subtitulos" lines="none">
+          <ion-buttons slot="start">
+            <ion-button color="primary" (click)="volver()">
+              <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-label>Categorias Generales</ion-label>
+          <ion-button mode="ios" size="small" slot="end" id="modalCategoria" fill="outline">
+            <ion-icon name="add"></ion-icon>Agregar categoria
+          </ion-button>
+        </ion-item>
+        <ion-grid fixed>
+          <ion-row class="ion-justify-content-center ion-align-items-center">
+            <ion-col size-lg="4" size-xs="12" *ngFor="let categoria of listaCategorias">
+              <ion-card class="cardCategorias" color="light" mode="ios">
+                <ion-card-header (click)="irSubcategoria(categoria)">
+                  <img [src]="categoria.img" alt="">
+                </ion-card-header>
+                <ion-card-content (click)="irSubcategoria(categoria)">
+                  <ion-label>{{categoria.nombre | titlecase }}</ion-label>
+                </ion-card-content>
+                <div class="botones">
+                  <ion-button color="success" size="small" fill="outline" shape="round">
+                    <ion-icon name="create"></ion-icon>
+                    <ion-label>Editar</ion-label>
+                  </ion-button>
+                  <ion-button color="danger" size="small" fill="outline" shape="round">
+                    <ion-icon name="trash"></ion-icon>
+                    <ion-label>Eliminar</ion-label>
+                  </ion-button>
+                </div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+          <div class="skeleton" *ngIf="!listaCategorias.length">
+            <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-col size="4" *ngFor="let categoria of [1,1,1,1,1]">
+                <ion-card color="light" mode="ios">
+                  <ion-card-header>
+                    <ion-skeleton-text animated style="width: 50%; height: 70%; margin: 0 auto;"></ion-skeleton-text>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-skeleton-text animated style="width: 100%; height: 30%; margin: 0 auto;"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 50%; height: 30%; margin: 0 auto; margin-top: 5px;"></ion-skeleton-text>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-grid>
+      </ion-col>
+      <ion-col size-xl="2" size-xs="1"></ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-modal trigger="modalCategoria">
     <ng-template>

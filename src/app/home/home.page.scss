@@ -25,3 +25,28 @@
 #container a {
   text-decoration: none;
 }
+
+ion-toolbar {
+  img {
+    padding: 10px;
+  }
+
+  ion-button {
+    padding-right: 10px;
+  }
+}
+
+
+.card {
+  margin: 10%;
+  text-align: center;
+  cursor: pointer;
+  ion-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-icon {
+      font-size: 50px;
+    }
+  }
+}

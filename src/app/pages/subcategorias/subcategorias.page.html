@@ -1,75 +1,75 @@
-<ion-header class="ion-no-border" translucent="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="light" icon="arrow-undo"></ion-back-button>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-row class="ion-justify-content-start ion-align-items-center">
+      <ion-col size="2">
+        <img src="../../assets/img/logo.png" alt="" (click)="irHome()">
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>| Nerio C. H.</ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button size="small" shape="round" fill="outline" color="light">
+          <ion-icon color="light" name="power-outline"></ion-icon> &nbsp;
+          <ion-label>Cerrar Sesion</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-buttons>
+      <ion-buttons slot="start">
+        <ion-menu-button color="danger" menu="primerMenu">
+        </ion-menu-button>
+      </ion-buttons>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content fullscreen="true">
-  <div class="container">
-    <div class="tituloPrincipal">
-      <div class="letrasTitulo">
-        <ion-label *ngIf="dataCategoria" class="ion-text-wrap">{{dataCategoria.nombre | uppercase}}</ion-label>
-      </div>
-      <!-- <img src="https://www.ucv.edu.pe/wp-content/uploads/2023/06/dia-el-ingeniero-y-arquitecto-peru-750.jpg" alt="">  -->
+  <div class="tituloPrincipal">
+    <div class="letrasTitulo">
+      <ion-label *ngIf="dataCategoria" class="ion-text-wrap">{{dataCategoria.nombre | uppercase}}</ion-label>
     </div>
-    <div class="contenido">  
-      <!-- <h2 *ngIf="dataCategoria">{{dataCategoria.nombre | titlecase}}</h2> -->
-      <ion-searchbar class="buscadorStyle" placeholder="Buscar..." type="text" [value]="target" (ionChange)="buscarGeneral($event)" [debounce]="250"></ion-searchbar>
-      <div class="skeleton" *ngIf="!listaUsuarios.length && !sinDatos && target">
-        <ion-skeleton-text *ngFor="let item of [1,1,1,1,1,1]" animated style="width: 94%; height: 90px; margin: 3%; border-radius: 20px;"></ion-skeleton-text>
-      </div>
-      <div class="sinDatos" *ngIf="sinDatos && target">
-        <ion-icon name="cloud-offline-outline"></ion-icon><br>
-        <ion-label>No se encontraron resultados</ion-label>
-      </div>
-      <div class="lista"  *ngFor="let usuario of listaUsuarios">
-        <ion-card class="cardUsuarios">
-          <ion-grid fixed>
-            <ion-row class="ion-align-items-center">
-              <ion-col size="3">
-                <ion-avatar class="ion-align-items-center">
-                  <img alt="foto de perfil" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfiQ5jt6UNVmHw7YJy7F6I25FV6LgBX9RS6w3wF7PUhORio-woVIGPyIZUcbNWENrBjI&usqp=CAU" />
-                </ion-avatar>
-              </ion-col>
-              <ion-col size="7">
-                <ion-row class="ion-no-padding">
-                  <ion-col class="ion-no-padding profesion" size="12">{{usuario.descripcion | uppercase}}</ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col class="ion-no-padding" size="12">{{usuario.nombres | titlecase}} {{usuario.apellidos | titlecase}}</ion-col>
-                </ion-row>
-                <ion-row class="ion-no-padding">
-                  <ion-col class="ion-no-padding" size="12"><ion-icon name="location" color="primary"></ion-icon>{{usuario.direccion | titlecase}}</ion-col>
-                </ion-row>
-              </ion-col>
-              <ion-col size="2">
-                <ion-buttons>
-                  <ion-button  color="success">
-                    <ion-icon slot="icon-only" name="call"></ion-icon>
-                  </ion-button>
-                </ion-buttons>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card>
-      </div>
+    <!-- <img src="https://www.ucv.edu.pe/wp-content/uploads/2023/06/dia-el-ingeniero-y-arquitecto-peru-750.jpg" alt="">  -->
+  </div>
+  <ion-row>
+    <ion-col size-xl="2" size-xs="1"></ion-col>
+    <ion-col size-xl="8" size-xs="10">
+      <ion-item class="subtitulos" lines="none" color="light">
+        <ion-buttons slot="start">
+          <ion-button color="primary" (click)="volver()">
+            <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-label>Sub Categorias</ion-label>
+        <ion-button mode="ios" size="small" slot="end" id="modalSubCategoria" fill="outline">
+          <ion-icon name="add"></ion-icon>Agregar Sub Categoria
+        </ion-button>
+      </ion-item>
       <ion-grid *ngIf="!target">
         <ion-row>
-          <ion-col size="6" *ngFor="let subcategoria of listaSubCategorias">
-            <ion-card class="cardInicio" mode="ios" (click)="irListaUsuariosServicio(subcategoria)">
+          <ion-col size-lg="4" size-xs="12" *ngFor="let subcategoria of listaSubCategorias">
+            <ion-card class="cardSubCategorias" mode="ios" (click)="irListaUsuariosServicio(subcategoria)">
               <ion-card-header>
                 <img [src]="subcategoria.img" alt="">
               </ion-card-header>
               <ion-card-content>
                 <ion-label>{{subcategoria.nombre | titlecase}}</ion-label>
               </ion-card-content>
+              <div class="botones">
+                <ion-button color="success" size="small" fill="outline" shape="round">
+                  <ion-icon name="create"></ion-icon>
+                  <ion-label>Editar</ion-label>
+                </ion-button>
+                <ion-button color="danger" size="small" fill="outline" shape="round">
+                  <ion-icon name="trash"></ion-icon>
+                  <ion-label>Eliminar</ion-label>
+                </ion-button>
+              </div>
             </ion-card>
           </ion-col>
         </ion-row>
         <div class="skeleton" *ngIf="!listaSubCategorias.length">
           <ion-row>
-            <ion-col size="6" *ngFor="let subcategoria of [1,1,1,1,1]">
+            <ion-col size-lg="4" size-xs="12" *ngFor="let subcategoria of [1,1,1,1,1]">
               <ion-card mode="ios">
                 <ion-card-header>
                 <ion-skeleton-text animated style="width: 50%; height: 70%; margin: 0 auto;"></ion-skeleton-text>
@@ -83,14 +83,15 @@
           </ion-row>
         </div>
       </ion-grid>
-    </div>
-  </div>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    </ion-col>
+    <ion-col size-xl="2" size-xs="1"></ion-col>
+  </ion-row>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button shape="round" id="modalSubCategoria">
       <ion-icon name="add"></ion-icon>
       <ion-label>Agregar Subcategoria</ion-label>
     </ion-button>
-  </ion-fab>
+  </ion-fab> -->
 
   <ion-modal trigger="modalSubCategoria">
     <ng-template>

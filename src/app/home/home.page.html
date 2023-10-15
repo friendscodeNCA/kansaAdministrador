@@ -3,6 +3,12 @@
     <ion-title>
       Blank
     </ion-title>
+    <ion-buttons>
+      <ion-buttons slot="start">
+        <ion-menu-button color="danger" menu="primerMenu">
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +20,12 @@
   </ion-header>
 
   <div id="container">
+    <ion-button (click)="irCategoria()" expand="block" shape="round">
+      Ir Categoria
+    </ion-button>
+    <ion-icon slot="start" name="co"></ion-icon>
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+  
 </ion-content>

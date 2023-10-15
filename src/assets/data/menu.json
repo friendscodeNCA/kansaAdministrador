@@ -1,0 +1,55 @@
+[
+    {
+        "icon": "home-outline",
+        "name": "Inicio",
+        "redirecTo": "/home"
+    },
+
+    {
+        "icon": "person-outline",
+        "name": "Perfil",
+        "redirecTo": "/perfil"
+    },
+    
+    {
+        "icon": "newspaper-outline",
+        "name": "Pedidos",
+        "redirecTo": "/pedidos"
+    },
+
+    {
+        "icon": "people-outline",
+        "name": "Clientes",
+        "redirecTo": "/clientes"
+    },
+
+    {
+        "icon": "megaphone-outline",
+        "name": "Ofertas",
+        "redirecTo": "/ofertas"
+    },
+
+    {
+        "icon": "pricetags-outline",
+        "name": "Descuentos",
+        "redirecTo": "/descuentos"
+    },
+
+    {
+        "icon": "reader-outline",
+        "name": "Anuncio Principal",
+        "redirecTo": "/anuncio-principal"
+    },
+
+    {
+        "icon": "ribbon-outline",
+        "name": "Productos Puntos",
+        "redirecTo": "/productos-puntos"
+    },
+    
+    {
+        "icon": "bicycle-outline",
+        "name": "Costo Delivery",
+        "redirecTo": "/costo-delivery"
+    }
+]

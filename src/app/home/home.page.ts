@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private menuCtrl: MenuController,
+    private router: Router
+    ) {
+    this.menuCtrl.enable(true);
+  }
+  irCategoria(){
+    console.log('ir a categorias');
+     this.router.navigate(['/categorias'])
+  }
 
 }

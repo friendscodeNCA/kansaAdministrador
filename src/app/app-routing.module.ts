@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'subcategorias/:id',
     loadChildren: () => import('./pages/subcategorias/subcategorias.module').then( m => m.SubcategoriasPageModule)
+  },  {
+    path: 'politicas',
+    loadChildren: () => import('./pages/politicas/politicas.module').then( m => m.PoliticasPageModule)
   },
+
 ];
 
 @NgModule({
